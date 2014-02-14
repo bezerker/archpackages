@@ -10,8 +10,8 @@ _tmpdir=/var/lib/nginx
 
 pkgname=nginx-rtmp-git
 pkgver=20121004
-ngxver=1.2.4
-pkgrel=4
+_ngxver=1.5.9
+pkgrel=1
 pkgdesc="nginx HTTP server with rtmp module"
 arch=('i686' 'x86_64')
 depends=('pcre' 'zlib' 'openssl')
@@ -32,14 +32,10 @@ backup=(${_cfgdir:1}/fastcgi.conf
 		${_cfgdir:1}/uwsgi_params
 		${_cfgdir:1}/win-utf
 		etc/logrotate.d/nginx)
-source=(http://nginx.org/download/nginx-$ngxver.tar.gz
+source=(http://nginx.org/download/nginx-$_ngxver.tar.gz
 		service
 		logrotate
 )
-md5sums=('a7c9a515f632c8cbb07ab67392208088'
-         'f62c7c9b5a53471d4666a4c49ad363fb'
-         '62d494d23aef31d0b867161f9fffa6eb'
-         'b38744739022876554a0444d92e6603b')
          
 _gitroot="https://github.com/arut/nginx-rtmp-module.git"
 _gitname="nginx-rtmp-module"
@@ -61,7 +57,7 @@ build() {
 
   rm -rf "$srcdir/$_gitname-build"
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-	cd "$srcdir"/nginx-$ngxver
+	cd "$srcdir"/nginx-$_ngxver
 
 	./configure \
         --prefix=$_cfgdir \
@@ -104,7 +100,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir"/nginx-$ngxver
+	cd "$srcdir"/nginx-$_ngxver
 	make DESTDIR="$pkgdir" install
 
 	install -d "$pkgdir"/etc/logrotate.d
@@ -126,3 +122,6 @@ package() {
 	install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/nginx/LICENSE
 	rm -rf "$pkgdir"/var/run
 }
+md5sums=('a7c9a515f632c8cbb07ab67392208088'
+         'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
+         '3441ce77cdd1aab6f0ab7e212698a8a7')
