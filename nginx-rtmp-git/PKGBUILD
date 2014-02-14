@@ -122,6 +122,6 @@ package() {
 	install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/nginx/LICENSE
 	rm -rf "$pkgdir"/var/run
 }
-md5sums=('a7c9a515f632c8cbb07ab67392208088'
+md5sums=('5fbde453d6bbc496f62a84412cd0bd8f'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7')
