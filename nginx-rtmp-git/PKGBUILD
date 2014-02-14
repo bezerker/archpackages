@@ -9,7 +9,7 @@ _cfgdir=/etc/nginx
 _tmpdir=/var/lib/nginx
 
 pkgname=nginx-rtmp-git
-pkgver=20121004
+pkgver=20140213
 _ngxver=1.5.9
 pkgrel=1
 pkgdesc="nginx HTTP server with rtmp module"
