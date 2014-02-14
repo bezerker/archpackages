@@ -117,7 +117,6 @@ package() {
 	install -d "$pkgdir"/usr/share/nginx
 	mv "$pkgdir"/etc/nginx/html/ "$pkgdir"/usr/share/nginx
 
-	install -D -m755 "$srcdir"/rc.d "$pkgdir"/etc/rc.d/nginx
 	install -Dm644 "$srcdir"/service "$pkgdir"/usr/lib/systemd/system/nginx.service
 	install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/nginx/LICENSE
 	rm -rf "$pkgdir"/var/run
